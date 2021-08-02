@@ -1,0 +1,120 @@
+/* global styles */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.desktop,
+.mobile {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  display: none;
+}
+.on {
+  display: block;
+}
+
+body {
+}
+main {
+  min-height: 100vh;
+  padding: 5rem 0;
+  display: grid;
+  place-items: center;
+}
+.to-do {
+  max-width: 375px;
+  width: 95%;
+}
+
+/* circle */
+.circle {
+  border: 1px solid blue;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+.check {
+  color: white;
+  font-size: 0;
+}
+.active .check {
+  font-size: 1rem;
+}
+
+/* header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header h1 {
+  color: white;
+  text-transform: uppercase;
+}
+.moon,
+.sun {
+  display: none;
+}
+.on {
+  display: block;
+}
+
+/* form */
+.todo-form {
+  background: white;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+.todo-input {
+  width: 100%;
+  border: ;
+}
+
+/* 
+article
+*/
+article {
+  display: grid;
+  gap: 1rem;
+  background: red;
+}
+
+/* single list*/
+.single-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1rem;
+  border-bottom: 1px solid yellow;
+}
+.todo-info {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.footer-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 1rem;
+}
+
+/* footer */
+footer {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}

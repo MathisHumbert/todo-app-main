@@ -10,6 +10,11 @@
       sizes="32x32"
       href="./images/favicon-32x32.png"
     />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
 
     <title>Frontend Mentor | Todo app</title>
 
@@ -29,53 +34,65 @@
     <img src="./images/bg-desktop-light.jpg" class="desktop light" />
     <img src="./images/bg-desktop-dark.jpg" class="desktop dark" />
     <img src="./images/bg-mobile-dark.jpg" class="mobile dark" />
-    <img src="./images/bg-mobile-light.jpg" class="mobile light" />
+    <img src="./images/bg-mobile-light.jpg" class="mobile light on" />
 
     <main>
-      <!-- header -->
-      <header>
-        <h1>Todo</h1>
-        <div class="toggle-img">
-          <img src="./images/icon-moon.svg" class="moon" />
-          <img src="./images/icon-sun.svg" class="sun" />
-        </div>
-      </header>
-      <!-- form / input -->
-      <form class="todo-form">
-        <img src="./images/icon-cross.svg" alt="" />
-        <input
-          type="text"
-          class="todo-input"
-          placeholder="Create a new todo..."
-        />
-      </form>
-      <article class="todo-main-list">
-        <!-- dynamic list -->
-        <div class="dynamic-list">
-          <div class="single-list">
-            <img src="./images/icon-check.svg" alt="" />
-            <p>Complete online JavaScript course</p>
-            <img src="./images/icon-cross.svg" alt="" />
+      <div class="to-do">
+        <!-- header -->
+        <header>
+          <h1>Todo</h1>
+          <div class="toggle-img">
+            <img src="./images/icon-moon.svg" class="moon on" />
+            <img src="./images/icon-sun.svg" class="sun" />
           </div>
-          <div class="single-list">
-            <img src="./images/icon-cross.svg" alt="" />
-            <p>Complete online JavaScript course</p>
-            <img src="./images/icon-cross.svg" alt="" />
+        </header>
+        <!-- form / input -->
+        <form class="todo-form">
+          <div class="circle">
+            <i class="fas fa-check check"></i>
           </div>
-          <!-- footer list -->
-          <div class="footer-list">
-            <span>5 items left</span>
-            <span>Clear Completed</span>
+          <input
+            type="text"
+            class="todo-input"
+            placeholder="Create a new todo..."
+          />
+        </form>
+        <article class="todo-main-list">
+          <!-- dynamic list -->
+          <div class="dynamic-list">
+            <div class="single-list">
+              <div class="todo-info">
+                <div class="circle active">
+                  <i class="fas fa-check check"></i>
+                </div>
+                <p>Complete online JavaScript course</p>
+              </div>
+              <img src="./images/icon-cross.svg" alt="" />
+            </div>
+            <div class="single-list">
+              <div class="todo-info">
+                <div class="circle">
+                  <i class="fas fa-check check"></i>
+                </div>
+                <p>Complete online JavaScript course</p>
+              </div>
+              <img src="./images/icon-cross.svg" alt="" />
+            </div>
+            <!-- footer list -->
+            <div class="footer-list">
+              <span>5 items left</span>
+              <span>Clear Completed</span>
+            </div>
           </div>
-        </div>
-        <!-- footer -->
+          <!-- footer -->
+        </article>
         <footer>
           <p>All</p>
           <p>Active</p>
           <p>Completed</p>
         </footer>
-      </article>
-      Drag and drop to reorder list
+      </div>
+      <!-- Drag and drop to reorder list -->
     </main>
 
     <!-- <div class="attribution">
