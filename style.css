@@ -18,6 +18,7 @@
 }
 
 body {
+  background: hsl(0, 0%, 98%);
 }
 main {
   min-height: 100vh;
@@ -32,19 +33,28 @@ main {
 
 /* circle */
 .circle {
-  border: 1px solid blue;
   width: 2rem;
   height: 2rem;
+  border: 1px solid hsl(236, 33%, 92%);
   border-radius: 50%;
   display: grid;
   place-items: center;
+  cursor: pointer;
 }
 .check {
   color: white;
   font-size: 0;
 }
-.active .check {
-  font-size: 1rem;
+.completed .check {
+  font-size: 10px;
+}
+.completed .circle {
+  background: linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  border-color: #fff;
+}
+
+.cross {
+  cursor: pointer;
 }
 
 /* header */
@@ -78,7 +88,8 @@ header h1 {
 }
 .todo-input {
   width: 100%;
-  border: ;
+  padding: 10px;
+  border: none;
 }
 
 /* 
@@ -87,7 +98,7 @@ article
 article {
   display: grid;
   gap: 1rem;
-  background: red;
+  background: #fff;
 }
 
 /* single list*/
@@ -96,7 +107,7 @@ article {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 1rem;
-  border-bottom: 1px solid yellow;
+  border-bottom: 1px solid hsl(233, 11%, 84%);
 }
 .todo-info {
   display: flex;
@@ -117,4 +128,10 @@ footer {
   display: flex;
   justify-content: center;
   gap: 10px;
+  background-color: #fff;
 }
+footer p {
+  cursor: pointer;
+}
+
+/* finir le css */

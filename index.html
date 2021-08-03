@@ -60,15 +60,17 @@
         <article class="todo-main-list">
           <!-- dynamic list -->
           <div class="dynamic-list">
-            <div class="single-list">
+            <!-- single list -->
+            <div class="single-list active completed">
               <div class="todo-info">
-                <div class="circle active">
+                <div class="circle">
                   <i class="fas fa-check check"></i>
                 </div>
                 <p>Complete online JavaScript course</p>
               </div>
-              <img src="./images/icon-cross.svg" alt="" />
+              <img src="./images/icon-cross.svg" class="cross" />
             </div>
+            <!-- single list -->
             <div class="single-list">
               <div class="todo-info">
                 <div class="circle">
@@ -78,14 +80,14 @@
               </div>
               <img src="./images/icon-cross.svg" alt="" />
             </div>
-            <!-- footer list -->
-            <div class="footer-list">
-              <span>5 items left</span>
-              <span>Clear Completed</span>
-            </div>
           </div>
-          <!-- footer -->
+          <!-- footer list -->
+          <div class="footer-list">
+            <span class="count-list">no items left</span>
+            <span>Clear Completed</span>
+          </div>
         </article>
+        <!-- footer -->
         <footer>
           <p>All</p>
           <p>Active</p>
@@ -101,5 +103,7 @@
         >Frontend Mentor</a
       >. Coded by <a href="#">Your Name Here</a>.
     </div> -->
+
+    <script src="./app.js"></script>
   </body>
 </html>
