@@ -13,23 +13,9 @@ form.addEventListener('submit', (e) => {
   e.preventDefault();
   amount++;
   let value = input.value;
-  let item = { value, state: 'active' };
-  items.push(item);
-
-  let content = document.createElement('div');
-  content.classList.add('single-list', 'active');
-  content.setAttribute('data-id', amount);
-  content.innerHTML = `
-              <div class="todo-info">
-                <div class="circle">
-                  <i class="fas fa-check check"></i>
-                </div>
-                <p>${value}</p>
-              </div>
-              <img src="./images/icon-cross.svg" class="cross" />
-  `;
-  list.appendChild(content);
-  input.value = '';
+  singleList(value, amount);
+  // let item = { value, state: 'active' };
+  // items.push(item);
 
   // get new element
   const deleteBtn = document.querySelectorAll('.cross');
@@ -52,6 +38,24 @@ form.addEventListener('submit', (e) => {
   countList(amount);
   console.log(items);
 });
+
+// create unique item
+const singleList = (value, amount) => {
+  let content = document.createElement('div');
+  content.classList.add('single-list', 'active');
+  content.setAttribute('data-id', amount);
+  content.innerHTML = `
+              <div class="todo-info">
+                <div class="circle">
+                  <i class="fas fa-check check"></i>
+                </div>
+                <p>${value}</p>
+              </div>
+              <img src="./images/icon-cross.svg" class="cross" />
+  `;
+  list.appendChild(content);
+  input.value = '';
+};
 
 // count number of list
 const countList = () => {
@@ -99,4 +103,8 @@ const completeUniqueBtn = (item) => {
 // completed
 // filter avec class completed
 
-// bug completed
+// bug completed a résoudre
+// click event sur le container des 3
+// if(textcontent === 'all'), display = "block"
+// if(textcontent === 'completed'), display all !classlist.contains display = "none"
+// if(textcontent === 'completed'), display all classlist.contains display = "none"
