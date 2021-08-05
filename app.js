@@ -21,21 +21,19 @@ form.addEventListener('submit', (e) => {
 
   // delete the list targeted
   deleteBtn.forEach((btn) => {
-    let id = btn.parentElement.dataset.id;
     btn.addEventListener('click', (e) => {
-      if (e.target.parentElement.dataset.id === id) {
-        console.log(e.target.parentElement);
-        e.target.parentElement.remove();
-        amount--;
-      }
-      countList(amount);
+      let id = e.target.parentElement.dataset.id;
+      let deleteditem = items.filter(
+        item,
+        (index) => item[index].amount === id
+      );
+      console.log(deleteditem);
     });
   });
   // complete the list tageted
-  // completeUniqueBtn(checkBtn);
   checkBtn.forEach((btn) => {
     const id = btn.parentElement.parentElement.dataset.id;
-    console.log(id);
+
     btn.addEventListener('click', (e) => {
       if (e.target.parentElement.parentElement.dataset.id === id) {
         e.target.parentElement.parentElement.classList.toggle('completed');
@@ -50,11 +48,11 @@ form.addEventListener('submit', (e) => {
 const singleList = (value, amount) => {
   let item = { value, amount, state: 'active' };
   items.push(item);
-  console.log(items);
+
   let allItems = items
     .map((item) => {
       return `
-    <div class="single-list active completed" data-id="${item.amount}">
+    <div class="single-list active" data-id="${item.amount}">
               <div class="todo-info">
                 <div class="circle">
                   <i class="fas fa-check check"></i>
@@ -67,53 +65,12 @@ const singleList = (value, amount) => {
     })
     .join('');
   list.innerHTML = allItems;
-  // let content = document.createElement('div');
-  // content.classList.add('single-list', 'active');
-  // content.setAttribute('data-id', amount);
-  // content.innerHTML = `
-  //             <div class="todo-info">
-  //               <div class="circle">
-  //                 <i class="fas fa-check check"></i>
-  //               </div>
-  //               <p>${value}</p>
-  //             </div>
-  //             <img src="./images/icon-cross.svg" class="cross" />
-  // `;
-  // list.appendChild(content);
-  // input.value = '';
+  input.value = '';
 };
 
 // count number of list
 const countList = () => {
   count.textContent = `${amount} items left`;
-};
-
-// completed the list targeted
-const completeUniqueBtn = (item) => {
-  item.forEach((btn) => {
-    let id = btn.parentElement.parentElement.dataset.id;
-    btn.addEventListener('click', (e) => {
-      if (e.target.classList.contains('check')) {
-        e.target.parentElement.parentElement.parentElement.classList.remove(
-          'completed'
-        );
-      }
-      console.log(id);
-      console.log(e.target.parentElement.parentElement);
-      console.log(
-        e.target.parentElement.parentElement.classList.contains('completed')
-      );
-      if (e.target.parentElement.parentElement.dataset.id === id) {
-        if (
-          e.target.parentElement.parentElement.classList.contains('completed')
-        ) {
-          e.target.parentElement.parentElement.classList.remove('completed');
-        } else {
-          e.target.parentElement.parentElement.classList.add('completed');
-        }
-      }
-    });
-  });
 };
 
 // clear completed
