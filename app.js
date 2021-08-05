@@ -14,8 +14,6 @@ form.addEventListener('submit', (e) => {
   amount++;
   let value = input.value;
   singleList(value, amount);
-  // let item = { value, state: 'active' };
-  // items.push(item);
 
   // get new element
   const deleteBtn = document.querySelectorAll('.cross');
@@ -26,6 +24,7 @@ form.addEventListener('submit', (e) => {
     let id = btn.parentElement.dataset.id;
     btn.addEventListener('click', (e) => {
       if (e.target.parentElement.dataset.id === id) {
+        console.log(e.target.parentElement);
         e.target.parentElement.remove();
         amount--;
       }
@@ -33,28 +32,55 @@ form.addEventListener('submit', (e) => {
     });
   });
   // complete the list tageted
-  completeUniqueBtn(checkBtn);
+  // completeUniqueBtn(checkBtn);
+  checkBtn.forEach((btn) => {
+    const id = btn.parentElement.parentElement.dataset.id;
+    console.log(id);
+    btn.addEventListener('click', (e) => {
+      if (e.target.parentElement.parentElement.dataset.id === id) {
+        e.target.parentElement.parentElement.classList.toggle('completed');
+      }
+    });
+  });
   // update number of items
   countList(amount);
-  console.log(items);
 });
 
 // create unique item
 const singleList = (value, amount) => {
-  let content = document.createElement('div');
-  content.classList.add('single-list', 'active');
-  content.setAttribute('data-id', amount);
-  content.innerHTML = `
+  let item = { value, amount, state: 'active' };
+  items.push(item);
+  console.log(items);
+  let allItems = items
+    .map((item) => {
+      return `
+    <div class="single-list active completed" data-id="${item.amount}">
               <div class="todo-info">
                 <div class="circle">
                   <i class="fas fa-check check"></i>
                 </div>
-                <p>${value}</p>
+                <p>${item.value}</p>
               </div>
               <img src="./images/icon-cross.svg" class="cross" />
-  `;
-  list.appendChild(content);
-  input.value = '';
+            </div>
+    `;
+    })
+    .join('');
+  list.innerHTML = allItems;
+  // let content = document.createElement('div');
+  // content.classList.add('single-list', 'active');
+  // content.setAttribute('data-id', amount);
+  // content.innerHTML = `
+  //             <div class="todo-info">
+  //               <div class="circle">
+  //                 <i class="fas fa-check check"></i>
+  //               </div>
+  //               <p>${value}</p>
+  //             </div>
+  //             <img src="./images/icon-cross.svg" class="cross" />
+  // `;
+  // list.appendChild(content);
+  // input.value = '';
 };
 
 // count number of list
@@ -103,7 +129,7 @@ const completeUniqueBtn = (item) => {
 // completed
 // filter avec class completed
 
-// bug completed a résoudre
+// bug completed a résoudre en cours
 // click event sur le container des 3
 // if(textcontent === 'all'), display = "block"
 // if(textcontent === 'completed'), display all !classlist.contains display = "none"
