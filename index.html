@@ -15,6 +15,12 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
 
     <title>Frontend Mentor | Todo app</title>
 
@@ -31,13 +37,22 @@
   </head>
   <body>
     <!-- background img -->
-    <img src="./images/bg-desktop-light.jpg" class="desktop light" />
-    <img src="./images/bg-desktop-dark.jpg" class="desktop dark" />
-    <img src="./images/bg-mobile-dark.jpg" class="mobile dark" />
-    <img src="./images/bg-mobile-light.jpg" class="mobile light on" />
+    <img
+      src="./images/bg-desktop-light.jpg"
+      class="background-img desktop light"
+    />
+    <img
+      src="./images/bg-desktop-dark.jpg"
+      class="background-img desktop dark"
+    />
+    <img src="./images/bg-mobile-dark.jpg" class="background-img mobile dark" />
+    <img
+      src="./images/bg-mobile-light.jpg"
+      class="background-img mobile light on"
+    />
 
     <main>
-      <div class="to-do">
+      <div class="container">
         <!-- header -->
         <header>
           <h1>Todo</h1>
@@ -46,30 +61,87 @@
             <img src="./images/icon-sun.svg" class="sun" />
           </div>
         </header>
-        <!-- form / input -->
-        <form class="todo-form">
-          <div class="main-circle"></div>
-          <input
-            type="text"
-            class="todo-input"
-            placeholder="Create a new todo..."
-          />
-        </form>
-        <article class="todo-main-list">
-          <!-- dynamic list -->
-          <div class="dynamic-list"></div>
-          <!-- footer list -->
-          <div class="footer-list">
-            <span class="count-list">0 items left</span>
-            <span class="clear-all">Clear Completed</span>
-          </div>
-        </article>
-        <!-- footer -->
-        <footer>
-          <p class="all-p">All</p>
-          <p class="active-p">Active</p>
-          <p class="completed-p">Completed</p>
-        </footer>
+        <div class="sub-container">
+          <!-- form / input -->
+          <form class="todo-form">
+            <div class="main-circle"></div>
+            <input
+              type="text"
+              class="todo-input"
+              placeholder="Create a new todo..."
+            />
+          </form>
+          <article class="todo-main-list">
+            <!-- dynamic list -->
+            <div class="dynamic-list">
+              <!-- single item -->
+              <article class="single-list">
+                <div class="todo-info">
+                  <div class="circle">
+                    <i class="fas fa-check check"></i>
+                  </div>
+                  <p>Complete online JavaScript course</p>
+                </div>
+                <img src="./images/icon-cross.svg" class="cross" />
+              </article>
+              <!-- single item -->
+              <article class="single-list completed">
+                <div class="todo-info">
+                  <div class="circle">
+                    <i class="fas fa-check check"></i>
+                  </div>
+                  <p>Complete online JavaScript course</p>
+                </div>
+                <img src="./images/icon-cross.svg" class="cross" />
+              </article>
+              <!-- single item -->
+              <article class="single-list">
+                <div class="todo-info">
+                  <div class="circle">
+                    <i class="fas fa-check check"></i>
+                  </div>
+                  <p>Complete online JavaScript course</p>
+                </div>
+                <img src="./images/icon-cross.svg" class="cross" />
+              </article>
+              <!-- single item -->
+              <article class="single-list">
+                <div class="todo-info">
+                  <div class="circle">
+                    <i class="fas fa-check check"></i>
+                  </div>
+                  <p>
+                    Complete online JavaScript courseComplete online JavaScript
+                    course
+                  </p>
+                </div>
+                <img src="./images/icon-cross.svg" class="cross" />
+              </article>
+              <!-- single item -->
+              <article class="single-list">
+                <div class="todo-info">
+                  <div class="circle">
+                    <i class="fas fa-check check"></i>
+                  </div>
+                  <p>Complete online JavaScript course</p>
+                </div>
+                <img src="./images/icon-cross.svg" class="cross" />
+              </article>
+            </div>
+            <!-- footer -->
+            <footer>
+              <div class="footer-list">
+                <span class="count-list">0 items left</span>
+                <span class="clear-all">Clear Completed</span>
+              </div>
+              <div class="footer-btn">
+                <p class="all-p">All</p>
+                <p class="active-p">Active</p>
+                <p class="completed-p">Completed</p>
+              </div>
+            </footer>
+          </article>
+        </div>
       </div>
       <!-- Drag and drop to reorder list -->
     </main>

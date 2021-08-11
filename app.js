@@ -49,7 +49,7 @@ form.addEventListener('submit', (e) => {
 
   // dislay completed
   completed.addEventListener('click', () => {
-    allList.forEach((list) => (list.style.display = 'flex'));
+    allList.forEach((list) => (list.style.display = 'grid'));
     allList.forEach((list) => {
       if (!list.classList.contains('completed')) {
         list.style.display = 'none';
@@ -59,7 +59,7 @@ form.addEventListener('submit', (e) => {
 
   // display active
   active.addEventListener('click', () => {
-    allList.forEach((list) => (list.style.display = 'flex'));
+    allList.forEach((list) => (list.style.display = 'grid'));
     allList.forEach((list) => {
       if (list.classList.contains('completed')) {
         list.style.display = 'none';
@@ -69,7 +69,7 @@ form.addEventListener('submit', (e) => {
 
   // display all
   all.addEventListener('click', () => {
-    allList.forEach((list) => (list.style.display = 'flex'));
+    allList.forEach((list) => (list.style.display = 'grid'));
   });
 
   // display amount of items
@@ -110,7 +110,10 @@ const displayAll = () => {
 if (amount === 0) {
 }
 
-// refaire le html
 // css
 // ajouter qq chose si il n'y a pas de todo list
 // enlever amount lorsque qu'on coche une case et vice versa
+// cacher et montrer les crois en full screen
+
+document.body.classList.add('dark');
+document.body.style.background = 'hsl(235, 21%, 11%)';

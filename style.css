@@ -16,35 +16,50 @@
 .on {
   display: block;
 }
+.mobile {
+  height: 267px;
+}
 
 body {
-  background: hsl(0, 0%, 98%);
+  color: hsl(235, 19%, 35%);
+  font-family: 'Josefin Sans', sans-serif;
+  background-color: hsl(0, 0%, 98%);
 }
 main {
   min-height: 100vh;
-  padding: 5rem 0;
+  padding: 3rem 0;
   display: grid;
-  place-items: center;
+  justify-items: center;
 }
-.to-do {
+.container {
   max-width: 375px;
   width: 95%;
+}
+.sub-container {
+  padding-top: 3rem;
+  display: grid;
+  gap: 1rem;
 }
 
 /* circle */
 .circle,
 .main-circle {
-  width: 2rem;
-  height: 2rem;
+  width: 26px;
+  height: 26px;
   border: 1px solid hsl(236, 33%, 92%);
   border-radius: 50%;
   display: grid;
   place-items: center;
   cursor: pointer;
+  transition: all 0.3s linear;
+}
+.circle:hover {
+  border-color: hsl(192, 100%, 95%);
 }
 .check {
   color: white;
   font-size: 0;
+  transition: all 0.3s linear;
 }
 .completed .check {
   font-size: 10px;
@@ -54,9 +69,15 @@ main {
   border-color: #fff;
 }
 
+/* cross */
 .cross {
   cursor: pointer;
+  /* /* z-index: -2; */
+  margin-left: 1rem;
 }
+/* .single-list:hover .cross {
+  z-index: inherit;
+} */
 
 /* header */
 header {
@@ -67,10 +88,12 @@ header {
 header h1 {
   color: white;
   text-transform: uppercase;
+  letter-spacing: 6px;
 }
 .moon,
 .sun {
   display: none;
+  cursor: pointer;
 }
 .on {
   display: block;
@@ -83,14 +106,20 @@ header h1 {
   grid-template-columns: auto 1fr;
   align-items: center;
   gap: 1rem;
-  padding: 1rem;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+  padding: 14px 22px;
+  border-radius: 10px;
 }
 .todo-input {
   width: 100%;
-  padding: 10px;
+  padding: 5px;
   border: none;
+  font-family: 'Josefin Sans', sans-serif;
+  color: hsl(235, 19%, 35%);
+  font-size: 16px;
+}
+.todo-input::placeholder {
+  color: hsl(233, 11%, 84%);
+  font-size: 16px;
 }
 
 /* 
@@ -98,8 +127,6 @@ article
 */
 .todo-main-list {
   display: grid;
-  gap: 1rem;
-  background: #fff;
 }
 
 /* single list*/
@@ -107,35 +134,140 @@ article
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 1rem;
+  padding: 1rem 22px;
   border-bottom: 1px solid hsl(233, 11%, 84%);
+  width: 100%;
+  background: #fff;
+}
+.single-list:first-child {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.single-list p {
+  max-width: 100%;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+.single-list.completed p {
+  text-decoration: line-through;
+  color: hsl(233, 11%, 84%);
 }
 .todo-info {
-  display: flex;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
   align-items: center;
+  gap: 1rem;
 }
 
+/* footer */
+footer {
+  display: grid;
+  gap: 1rem;
+  background-color: transparent;
+}
+/* footer list */
 .footer-list {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 1rem;
+  background: #fff;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.clear-all {
+  cursor: pointer;
+  color: hsl(233, 11%, 84%);
+  font-size: 14px;
+  transition: all 0.3s linear;
+}
+.clear-all:hover {
+  color: hsl(236, 9%, 61%);
 }
 
-/* footer */
-footer {
-  margin-top: 1rem;
+.count-list {
+  color: hsl(233, 11%, 84%);
+  font-size: 14px;
+}
+
+/* footer-btn */
+.footer-btn {
   display: flex;
   justify-content: center;
   gap: 10px;
   background-color: #fff;
-}
-footer p {
+  padding: 1rem;
+  border-radius: 10px;
+  color: hsl(236, 9%, 61%);
   cursor: pointer;
 }
 
-/* finir le css */
-.clear-all {
-  cursor: pointer;
+.footer p {
+  font-size: 16px;
+  transition: all 0.3s linear;
 }
+.all-p {
+  color: hsl(220, 98%, 61%);
+}
+.active-p:hover,
+.completed-p:hover {
+  color: hsl(235, 19%, 35%);
+}
+
+/*
+ dark theme 
+ */
+.dark .todo-form {
+  background: hsl(237, 14%, 26%);
+}
+.dark .todo-input {
+  background-color: transparent;
+  color: hsl(236, 33%, 92%);
+}
+.dark .todo-input::placeholder {
+  color: hsl(233, 14%, 35%);
+}
+
+.dark .single-list {
+  border-bottom: 1px solid hsl(233, 14%, 35%);
+  background: hsl(237, 14%, 26%);
+}
+.dark .single-list p {
+  color: hsl(234, 39%, 85%);
+}
+.dark .single-list.completed p {
+  color: hsl(233, 14%, 35%);
+}
+
+.dark .footer-list {
+  background: hsl(237, 14%, 26%);
+}
+.dark .clear-all,
+.dark .count-list {
+  color: hsl(233, 14%, 35%);
+}
+.dark .clear-all:hover {
+  color: #fff;
+}
+
+.dark .footer-btn {
+  color: hsl(233, 14%, 35%);
+  background: hsl(237, 14%, 26%);
+}
+.dark .all-p {
+  color: hsl(220, 98%, 61%);
+}
+.dark .active-p:hover,
+.dark .completed-p:hover {
+  color: #fff;
+}
+
+.dark .circle,
+.dark .main-circle {
+  border-color: hsl(235, 19%, 35%);
+}
+.circle:hover {
+  border-color: hsl(280, 87%, 95%);
+}
+
+/* media screen */
