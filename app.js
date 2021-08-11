@@ -9,6 +9,12 @@ const all = document.querySelector('.all-p');
 const active = document.querySelector('.active-p');
 const completed = document.querySelector('.completed-p');
 
+const toggleImg = document.querySelector('.toggle-img');
+const moon = document.querySelector('.moon');
+const sun = document.querySelector('.sun');
+
+const noList = document.querySelector('.no-list');
+
 // inital amount of list
 let amount = 0;
 
@@ -49,7 +55,7 @@ form.addEventListener('submit', (e) => {
 
   // dislay completed
   completed.addEventListener('click', () => {
-    allList.forEach((list) => (list.style.display = 'grid'));
+    allList.forEach((list) => (list.style.display = 'flex'));
     allList.forEach((list) => {
       if (!list.classList.contains('completed')) {
         list.style.display = 'none';
@@ -59,7 +65,7 @@ form.addEventListener('submit', (e) => {
 
   // display active
   active.addEventListener('click', () => {
-    allList.forEach((list) => (list.style.display = 'grid'));
+    allList.forEach((list) => (list.style.display = 'flex'));
     allList.forEach((list) => {
       if (list.classList.contains('completed')) {
         list.style.display = 'none';
@@ -69,7 +75,7 @@ form.addEventListener('submit', (e) => {
 
   // display all
   all.addEventListener('click', () => {
-    allList.forEach((list) => (list.style.display = 'grid'));
+    allList.forEach((list) => (list.style.display = 'flex'));
   });
 
   // display amount of items
@@ -78,6 +84,9 @@ form.addEventListener('submit', (e) => {
 
   // set back to default
   input.value = '';
+
+  // display no list
+  displayNoList(amount);
 });
 
 // functions
@@ -87,33 +96,68 @@ const countList = () => {
 
 const completeItem = (e) => {
   const element = e.target.parentElement.parentElement;
+  console.log(amount);
   if (e.target.parentElement.classList.contains('circle')) {
     e.target.parentElement.parentElement.parentElement.classList.remove(
       'completed'
     );
+    amount--;
   } else {
-    element.classList.toggle('completed');
+    if (element.classList.contains('completed')) {
+      element.classList.remove('completed');
+      amount++;
+    } else {
+      element.classList.add('completed');
+      amount--;
+    }
   }
+  countList();
 };
 
 const deleteItem = (e) => {
+  let parentValue = e.target.previousElementSibling.parentElement;
+  console.log(parentValue);
   const element = e.target.parentElement;
   list.removeChild(element);
-  amount--;
-  countList();
+  if (parentValue.classList.contains('completed')) {
+    countList();
+    displayNoList(amount);
+  } else {
+    amount--;
+    // changer
+    countList();
+    displayNoList(amount);
+  }
 };
 
 const displayAll = () => {
   allList.forEach((list) => (list.style.display = 'flex'));
 };
 
-if (amount === 0) {
-}
+const displayNoList = (amount) => {
+  if (amount === 0) {
+    noList.style.display = 'block';
+  } else {
+    noList.style.display = 'none';
+  }
+};
+window.addEventListener('DOMContentLoaded', displayNoList(0));
 
-// css
-// ajouter qq chose si il n'y a pas de todo list
 // enlever amount lorsque qu'on coche une case et vice versa
-// cacher et montrer les crois en full screen
 
-document.body.classList.add('dark');
-document.body.style.background = 'hsl(235, 21%, 11%)';
+// Color toggle
+toggleImg.addEventListener('click', (e) => {
+  const imgValue = e.target;
+  if (imgValue.classList.contains('moon')) {
+    moon.classList.remove('on');
+    sun.classList.add('on');
+    document.body.style.background = 'hsl(235, 21%, 11%)';
+    document.body.classList.add('dark');
+  }
+  if (imgValue.classList.contains('sun')) {
+    sun.classList.remove('on');
+    moon.classList.add('on');
+    document.body.style.background = 'hsl(0, 0%, 98%)';
+    document.body.classList.remove('dark');
+  }
+});

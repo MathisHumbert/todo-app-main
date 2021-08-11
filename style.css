@@ -214,6 +214,18 @@ footer {
   color: hsl(235, 19%, 35%);
 }
 
+/* no list */
+.no-list {
+  text-align: center;
+  background: #fff;
+  font-size: 2rem;
+  padding: 2rem 1rem;
+  text-decoration: underline;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  display: block;
+}
+
 /*
  dark theme 
  */
@@ -266,8 +278,14 @@ footer {
 .dark .main-circle {
   border-color: hsl(235, 19%, 35%);
 }
-.circle:hover {
+.dark .circle:hover {
   border-color: hsl(280, 87%, 95%);
 }
 
+.dark .no-list {
+  background: hsl(237, 14%, 26%);
+  color: hsl(236, 33%, 92%);
+}
+
 /* media screen */
+/* cacher et montrer les crois en full screen */
