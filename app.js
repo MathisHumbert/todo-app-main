@@ -2,73 +2,115 @@
 const form = document.querySelector('.todo-form');
 const input = document.querySelector('.todo-input');
 const count = document.querySelector('.count-list');
-const clearAll = document.querySelector('.clear-all');
 const list = document.querySelector('.dynamic-list');
+
+const clearAll = document.querySelector('.clear-all');
+const all = document.querySelector('.all-p');
+const active = document.querySelector('.active-p');
+const completed = document.querySelector('.completed-p');
 
 // inital amount of list
 let amount = 0;
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  amount++;
-  let value = input.value;
+  const textValue = input.value;
 
-  // create the new list
+  // create the article element
+  const element = document.createElement('article');
+  element.classList.add('single-list');
+  element.innerHTML = `
+  <div class="todo-info">
+    <div class="circle">
+      <i class="fas fa-check check"></i>
+    </div>
+      <p>${textValue}</p>
+  </div>
+  <img src="./images/icon-cross.svg" class="cross" />
+  `;
+  // get the new btn
+  const deleteBtn = element.querySelector('.cross');
+  const completeBtn = element.querySelector('.circle');
 
-  // get new element
-  const deleteBtn = document.querySelector('.cross');
-  const checkBtn = document.querySelector('.circle');
-  const uniqueList = document.querySelector('.single-list');
+  // delete
+  deleteBtn.addEventListener('click', deleteItem);
 
-  // delete the list targeted
-  deleteBtn.forEach((btn) => {
-    btn.addEventListener('click', (e) => {});
+  // complete
+  completeBtn.addEventListener('click', completeItem);
+
+  // display element
+  list.appendChild(element);
+  const allList = document.querySelectorAll('.single-list');
+
+  // clear completed
+  clearAll.addEventListener('click', () => {
+    allList.forEach((list) => list.classList.remove('completed'));
   });
 
-  // complete the list tageted
-  checkBtn.forEach((btn) => {
-    const id = btn.parentElement.parentElement.dataset.id;
-    btn.addEventListener('click', (e) => {
-      if (e.target.classList.contains('check')) {
-        e.target.parentElement.parentElement.parentElement.classList.remove(
-          'completed'
-        );
-      } else {
-        if (e.target.parentElement.parentElement.dataset.id === id) {
-          e.target.parentElement.parentElement.classList.toggle('completed');
-        }
+  // dislay completed
+  completed.addEventListener('click', () => {
+    allList.forEach((list) => (list.style.display = 'flex'));
+    allList.forEach((list) => {
+      if (!list.classList.contains('completed')) {
+        list.style.display = 'none';
       }
     });
   });
 
-  // update number of items
-  countList(amount);
-
-  // cleat all completed
-  clearAll.addEventListener('click', () => {
-    uniqueList.forEach((list) => {
-      list.classList.remove('completed');
+  // display active
+  active.addEventListener('click', () => {
+    allList.forEach((list) => (list.style.display = 'flex'));
+    allList.forEach((list) => {
+      if (list.classList.contains('completed')) {
+        list.style.display = 'none';
+      }
     });
   });
 
-  // display the final list
+  // display all
+  all.addEventListener('click', () => {
+    allList.forEach((list) => (list.style.display = 'flex'));
+  });
+
+  // display amount of items
+  amount++;
+  countList();
+
+  // set back to default
+  input.value = '';
 });
 
-// count number of list
+// functions
 const countList = () => {
   count.textContent = `${amount} items left`;
 };
 
-// refaire la partie de création de la list et afficher la list en fin
+const completeItem = (e) => {
+  const element = e.target.parentElement.parentElement;
+  if (e.target.parentElement.classList.contains('circle')) {
+    e.target.parentElement.parentElement.parentElement.classList.remove(
+      'completed'
+    );
+  } else {
+    element.classList.toggle('completed');
+  }
+};
 
-// all
-// display all
+const deleteItem = (e) => {
+  const element = e.target.parentElement;
+  list.removeChild(element);
+  amount--;
+  countList();
+};
 
-// active
-// filter les .single-list qui n'ont pas de class completed
-// soit en utilisant un filter mais il faut que mes items soit dans un tableau ou avec un if contains
+const displayAll = () => {
+  allList.forEach((list) => (list.style.display = 'flex'));
+};
 
-// click event sur le container des 3
-// if(textcontent === 'all'), display = "block"
-// if(textcontent === 'completed'), display all !classlist.contains display = "none"
-// if(textcontent === 'completed'), display all classlist.contains display = "none"
+if (amount === 0) {
+}
+
+// refaire le html
+// css
+// ajouter qq chose si il n'y a pas de todo list
+// enlever amount lorsque qu'on coche une case et vice versa

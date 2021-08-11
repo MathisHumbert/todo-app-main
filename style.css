@@ -96,7 +96,7 @@ header h1 {
 /* 
 article
 */
-article {
+.todo-main-list {
   display: grid;
   gap: 1rem;
   background: #fff;
