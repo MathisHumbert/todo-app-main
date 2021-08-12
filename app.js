@@ -12,6 +12,8 @@ const completed = document.querySelector('.completed-p');
 const toggleImg = document.querySelector('.toggle-img');
 const moon = document.querySelector('.moon');
 const sun = document.querySelector('.sun');
+const light = document.querySelectorAll('.light');
+const dark = document.querySelectorAll('.dark');
 
 const noList = document.querySelector('.no-list');
 
@@ -51,6 +53,8 @@ form.addEventListener('submit', (e) => {
   // clear completed
   clearAll.addEventListener('click', () => {
     allList.forEach((list) => list.classList.remove('completed'));
+    amount = list.childElementCount - 1;
+    countList();
   });
 
   // dislay completed
@@ -155,12 +159,16 @@ toggleImg.addEventListener('click', (e) => {
     sun.classList.add('on');
     document.body.style.background = 'hsl(235, 21%, 11%)';
     document.body.classList.add('dark');
+    light.forEach((light) => light.classList.remove('on'));
+    dark.forEach((dark) => dark.classList.add('on'));
   }
   if (imgValue.classList.contains('sun')) {
     sun.classList.remove('on');
     moon.classList.add('on');
     document.body.style.background = 'hsl(0, 0%, 98%)';
     document.body.classList.remove('dark');
+    light.forEach((light) => light.classList.add('on'));
+    dark.forEach((dark) => dark.classList.remove('on'));
   }
 });
 

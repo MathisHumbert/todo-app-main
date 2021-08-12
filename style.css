@@ -10,14 +10,22 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: -3;
+}
+.desktop {
   display: none;
 }
-.on {
+.mobile {
   display: block;
+}
+.on {
+  z-index: -2;
 }
 .mobile {
   height: 267px;
+}
+.desktop {
+  height: 300px;
 }
 
 body {
@@ -104,7 +112,7 @@ header h1 {
   background: white;
   display: grid;
   grid-template-columns: auto 1fr;
-  align-items: center;
+  place-items: center;
   gap: 1rem;
   padding: 14px 22px;
   border-radius: 10px;
@@ -125,9 +133,6 @@ header h1 {
 /* 
 article
 */
-.todo-main-list {
-  display: grid;
-}
 
 /* single list*/
 .single-list {
@@ -140,6 +145,10 @@ article
   background: #fff;
 }
 .single-list:first-child {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.single-list:nth-child(0n + 2) {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
@@ -226,6 +235,15 @@ footer {
   display: block;
 }
 
+/* attribution */
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(220, 98%, 61%);
+}
+
 /*
  dark theme 
  */
@@ -289,3 +307,52 @@ footer {
 
 /* media screen */
 /* cacher et montrer les crois en full screen */
+
+@media screen and (min-width: 780px) {
+  .container {
+    max-width: 580px;
+    width: 95%;
+  }
+  footer {
+    position: relative;
+    display: block;
+  }
+  .footer-list {
+    padding: 0;
+  }
+  .count-list {
+    position: absolute;
+    left: 1rem;
+    bottom: 2rem;
+  }
+  .clear-all {
+    position: absolute;
+    right: 1rem;
+    bottom: 2rem;
+  }
+  .footer-btn {
+    z-index: 2;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding: 2rem;
+  }
+  .desktop {
+    display: block;
+  }
+  .mobile {
+    display: none;
+  }
+  .cross {
+    z-index: -2;
+  }
+  .single-list:hover .cross {
+    z-index: inherit;
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .container {
+    max-width: 780px;
+    width: 95%;
+  }
+}
