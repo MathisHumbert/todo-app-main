@@ -89,11 +89,12 @@ form.addEventListener('submit', (e) => {
   displayNoList(amount);
 });
 
-// functions
+// Function disaply count
 const countList = () => {
   count.textContent = `${amount} items left`;
 };
 
+// Function complete item
 const completeItem = (e) => {
   const element = e.target.parentElement.parentElement;
   console.log(amount);
@@ -101,7 +102,7 @@ const completeItem = (e) => {
     e.target.parentElement.parentElement.parentElement.classList.remove(
       'completed'
     );
-    amount--;
+    amount++;
   } else {
     if (element.classList.contains('completed')) {
       element.classList.remove('completed');
@@ -114,6 +115,7 @@ const completeItem = (e) => {
   countList();
 };
 
+// Function delete item
 const deleteItem = (e) => {
   let parentValue = e.target.previousElementSibling.parentElement;
   console.log(parentValue);
@@ -124,26 +126,26 @@ const deleteItem = (e) => {
     displayNoList(amount);
   } else {
     amount--;
-    // changer
+    // changer ca
     countList();
     displayNoList(amount);
   }
 };
 
+// Function display All
 const displayAll = () => {
   allList.forEach((list) => (list.style.display = 'flex'));
 };
 
+// Display message
 const displayNoList = (amount) => {
-  if (amount === 0) {
+  if (amount === 0 && noList.nextElementSibling === null) {
     noList.style.display = 'block';
   } else {
     noList.style.display = 'none';
   }
 };
 window.addEventListener('DOMContentLoaded', displayNoList(0));
-
-// enlever amount lorsque qu'on coche une case et vice versa
 
 // Color toggle
 toggleImg.addEventListener('click', (e) => {
@@ -161,3 +163,5 @@ toggleImg.addEventListener('click', (e) => {
     document.body.classList.remove('dark');
   }
 });
+
+console.log(noList.nextElementSibling);
